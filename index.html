@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="https://js.maxmind.com/js/apis/geoip2/v2.1/geoip2.js" type="text/javascript"></script>
+<script language="JavaScript">
+var user_country = geoip2.city(
+    function (response) {
+var subdivision = response.subdivisions[0].iso_code
+console.log(subdivision)
+console.log(response)
+
+var url = ''
+switch (subdivision) {
+  case 'DE': //Delaver
+    url = "http://delaver.yahoo.com";
+    break;
+  case 'TX':
+    url = "http://texas.yahoo.com";
+    break;
+  default:  
+    url = "http://others.yahoo.com";
+}
+
+//window.location = url
+
+// Simulate a mouse click:
+//window.location.href = url
+
+// Simulate an HTTP redirect:
+//window.location.replace(url)
+
+//assign redirect
+//window.location.assign(url);
+
+    },
+    function (error) {
+        // handle error
+    }
+);
+</script>
+</html>
